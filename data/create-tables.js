@@ -17,10 +17,23 @@ async function run() {
                     email VARCHAR(256) NOT NULL,
                     hash VARCHAR(512) NOT NULL
                 );           
-                CREATE TABLE animals (
+                CREATE TABLE favorites (
                     id SERIAL PRIMARY KEY NOT NULL,
                     name VARCHAR(512) NOT NULL,
-                    cool_factor INTEGER NOT NULL,
+                    category VARCHAR(512) NOT NULL,
+                    attending_count INTEGER NOT NULL,
+                    cost INTEGER,
+                    description VARCHAR(512) NOT NULL,
+                    event_site_url VARCHAR(512) NOT NULL,
+                    image_url VARCHAR(512) NOT NULL,
+                    is_canceled BOOLEAN NOT NULL,
+                    tickets_url VARCHAR(512) NOT NULL,
+                    time_end VARCHAR(512) NOT NULL,
+                    time_start VARCHAR(512) NOT NULL,
+                    city VARCHAR(512) NOT NULL,
+                    zip_code VARCHAR(512) NOT NULL,
+                    state VARCHAR(512) NOT NULL,
+                    display_address VARCHAR(512) NOT NULL,
                     owner_id INTEGER NOT NULL REFERENCES users(id)
             );
         `);
