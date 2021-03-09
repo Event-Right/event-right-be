@@ -27,25 +27,25 @@ async function run() {
     await Promise.all(
       favorites.map(favorite => {
         return client.query(`
-                    INSERT INTO favorites (name, category, attending_count, cost, description, event_site_url, image_url, is_canceled, tickets_url, time_end, time_start, city, zip_code, state,display_address, owner_id)
+                    INSERT INTO favorites (name, categories, review_count, price, transactions, url, image_url, is_closed, rating, distance, display_phone, city, zip_code, state, display_address, owner_id)
                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16);
                 `,
         [
-          favorite.events[0].name, 
-          favorite.events[0].category, 
-          favorite.events[0].attending_count, 
-          favorite.events[0].cost, 
-          favorite.events[0].description, 
-          favorite.events[0].event_site_url, 
-          favorite.events[0].image_url, 
-          favorite.events[0].is_canceled, 
-          favorite.events[0].tickets_url, 
-          favorite.events[0].time_end, 
-          favorite.events[0].time_start, 
-          favorite.events[0].location.city,
-          favorite.events[0].location.zip_code,
-          favorite.events[0].location.state,
-          favorite.events[0].location.display_address, 
+          favorite.name, 
+          favorite.categories, 
+          favorite.review_count, 
+          favorite.price, 
+          favorite.transactions, 
+          favorite.url, 
+          favorite.image_url, 
+          favorite.is_closed, 
+          favorite.rating,
+          favorite.distance, 
+          favorite.display_phone,  
+          favorite.location.city,
+          favorite.location.zip_code,
+          favorite.location.state,
+          favorite.location.display_address, 
           user.id
         ]);
       })
