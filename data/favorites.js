@@ -1,5 +1,6 @@
 module.exports = [
   {
+    'business_id': 'rCS4w1A24k33FFTzZ52Vog',
     'id': 'rCS4w1A24k33FFTzZ52Vog',
     'alias': 'oh-k-dog-new-york',
     'name': 'Oh K-Dog',
@@ -48,6 +49,7 @@ module.exports = [
     'distance': 671.1416782812253
   },
   {
+    'business_id': '2n01u4yKfIrWuOzRVvIZmw',
     'id': '2n01u4yKfIrWuOzRVvIZmw',
     'alias': 'crif-dogs-new-york',
     'name': 'Crif Dogs',
@@ -93,6 +95,7 @@ module.exports = [
     'distance': 1153.7670262113452
   },
   {
+    'business_id': 'Zmin8-_F2gYMrMY7dbblGg',
     'id': 'Zmin8-_F2gYMrMY7dbblGg',
     'alias': 'grays-papaya-new-york-8',
     'name': 'Gray\'s Papaya',

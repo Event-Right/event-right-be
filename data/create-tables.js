@@ -34,6 +34,7 @@ async function run() {
                     zip_code VARCHAR(512) NOT NULL,
                     state VARCHAR(512) NOT NULL,
                     display_address VARCHAR(512) NOT NULL,
+                    business_id VARCHAR(512) NOT NULL,
                     owner_id INTEGER NOT NULL REFERENCES users(id)
             );
         `);
