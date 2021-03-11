@@ -6,6 +6,8 @@ const { getEmoji } = require('../lib/emoji.js');
 
 run();
 
+//https://hidden-fjord-82693.herokuapp.com
+
 async function run() {
 
   try {
