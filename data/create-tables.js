@@ -15,7 +15,8 @@ async function run() {
                 CREATE TABLE users (
                     id SERIAL PRIMARY KEY,
                     email VARCHAR(256) NOT NULL,
-                    hash VARCHAR(512) NOT NULL
+                    hash VARCHAR(512) NOT NULL,
+                    name VARCHAR(512) NOT NULL
                 );           
                 CREATE TABLE favorites (
                     id SERIAL PRIMARY KEY NOT NULL,
@@ -41,7 +42,7 @@ async function run() {
 
     console.log('create tables complete', getEmoji(), getEmoji(), getEmoji());
   }
-  catch(err) {
+  catch (err) {
     // problem? let's see the error...
     console.log(err);
   }
