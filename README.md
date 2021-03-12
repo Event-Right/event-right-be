@@ -1,40 +1,65 @@
-# Create Alchemy SQL BE
+# Fave Dogs (Back End) v1.0.0
 
-## Getting started
-1. Clone your repo down and run `npm i` to install dependencies.
-1. Change all the files in the `data` directory to match the data model of your app.
-1. Run `heroku create`
-1. Run `npm run setup-heroku` to create a heroku SQL database in the cloud to go with your heroku app.
-1. Run `heroku config:get DATABASE_URL` to get your heroku sql database url from the cloud.
-1. Put the database URL in your .env file, under `DATABASE_URL`. (Don't forget to changge the file name from `.env-example` to `.env`!)
-1. Run `npm run setup-db`
-1. Run `npm run start:watch` to start the dev server
-1. Routes are in `app.js`, not in `server.js`. This is so our tests will not launch a server every time.
+## Meet The Team
 
-## HARD MODE: Override default queries
+* [Tyler Farris](https://www.linkedin.com/in/tyler-p-farris/)
+* [Eion Nelson](https://www.linkedin.com/in/eionnelson/)
+* [Minh Ngo](https://www.linkedin.com/in/minhnngo/)
+* [Edmond Zhan](https://www.linkedin.com/in/edmondzhan/)
 
-```js
-// OPTIONALLY pass in new queries to override defaults
+---
+### Our Vision
 
-const authRoutes = createAuthRoutes({
-    selectUser(email) {
-        return client.query(`
-            SELECT id, email, hash
-            FROM users
-            WHERE email = $1;
-        `,
-        [email]
-        ).then(result => result.rows[0]);
-    },
-    insertUser(user, hash) {
-        console.log(user);
-        return client.query(`
-            INSERT into users (email, hash)
-            VALUES ($1, $2)
-            RETURNING id, email;
-        `,
-        [user.email, hash]
-        ).then(result => result.rows[0]);
-    }
+Our goal for this app was to solve a problem nobody even knew they had: the ability to find businesses that sells hot dogs. When looking up food joints, it can be very overwhelming due to the amount of food places available. This project helps solve this issue by giving the user the ability to look up businesses that specifically sells hot dogs to find the right hot dog for them!
+
+---
+### Description
+
+Our app aims to provide the user the ability to look up their favorite hot dog businesses. They'll have the option to look up by location as well as sort by various different categories to get the most satisfying results! Afterwards, they can add it to their favorites so they'll be able to see all of their favorite locations in one spot.
+
+---
+### It Just Works
+
+You simply need to just go to the netlify site and you're good to go!
+
+---
+
+### Libraries
+
+  * `npm i`
+  * `react`
+  * `react-router-dom`
+
+---
+### API Endpoint Example
+
+```
+app.get('/dogs/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const businessList = await request
+      .get(`https://api.yelp.com/v3/businesses/${id}`)
+      .set('Authorization', `Bearer ${process.env.YELP_API}`)
+      .set('Accept', 'application/json');
+    res.json(businessList.body);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
 });
+```
+returns 
+```
+{
+    'id': 'rCS4w1A24k33FFTzZ52Vog',
+    'alias': 'oh-k-dog-new-york',
+    'name': 'Oh K-Dog',
+    'image_url': 'https://s3-media2.fl.yelpcdn.com/bphoto/
+    ...
+    ...
+    ...
+    },
+    'phone': '+16464484836',
+    'display_phone': '(646) 448-4836',
+    'distance': 671.1416782812253
+  }
 ```

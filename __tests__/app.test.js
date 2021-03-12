@@ -9,7 +9,7 @@ const client = require('../lib/client');
 describe('app routes', () => {
   describe('routes', () => {
     let token;
-  
+    
     beforeAll(async done => {
       execSync('npm run setup-db');
   
@@ -34,7 +34,7 @@ describe('app routes', () => {
 
     test('returns hot dog establishments', async() => {
 
-      const expectation = {"alias": "authentic-new-york-hots-portland", "categories": [{"alias": "hotdog", "title": "Hot Dogs"}, {"alias": "gourmet", "title": "Specialty Food"}], "coordinates": {"latitude": 45.5592565053794, "longitude": -122.648956799521}, "display_phone": "(971) 335-6860", "distance": 4850.419984809663, "id": "nezajlHE9KdPUvsg6J4Xzw", "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/isArrQRRJCzdzC4trskRqQ/o.jpg", "is_closed": false, "location": {"address1": "1533 NE Alberta St", "address2": null, "address3": "", "city": "Portland", "country": "US", "display_address": ["1533 NE Alberta St", "Portland, OR 97211"], "state": "OR", "zip_code": "97211"}, "name": "AUTHENTIC NEW YORK HOTS", "phone": "+19713356860", "rating": 5, "review_count": 9, "transactions": ['pickup', 'delivery'], "url": "https://www.yelp.com/biz/authentic-new-york-hots-portland?adjust_creative=VlwxeBD8K9KAQQhu1J_aVg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=VlwxeBD8K9KAQQhu1J_aVg"};
+      const expectation = {"alias": "authentic-new-york-hots-portland", "categories": [{"alias": "hotdog", "title": "Hot Dogs"}, {"alias": "gourmet", "title": "Specialty Food"}], "coordinates": {"latitude": 45.5592565053794, "longitude": -122.648956799521}, "display_phone": "(971) 335-6860", "distance": 4850.419984809663, "id": "nezajlHE9KdPUvsg6J4Xzw", "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/isArrQRRJCzdzC4trskRqQ/o.jpg", "is_closed": false, "location": {"address1": "1533 NE Alberta St", "address2": null, "address3": "", "city": "Portland", "country": "US", "display_address": ["1533 NE Alberta St", "Portland, OR 97211"], "state": "OR", "zip_code": "97211"}, "name": "AUTHENTIC NEW YORK HOTS", "phone": "+19713356860", "rating": 5, "review_count": 9, "transactions": expect.arrayContaining(['pickup', 'delivery']), "url": "https://www.yelp.com/biz/authentic-new-york-hots-portland?adjust_creative=VlwxeBD8K9KAQQhu1J_aVg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=VlwxeBD8K9KAQQhu1J_aVg"};
 
       const data = await fakeRequest(app)
         .get('/dogs')
@@ -135,10 +135,10 @@ describe('app routes', () => {
             'is_open_now': true
           }
         ],
-        'transactions': [
+        'transactions': expect.arrayContaining([
           "pickup",
           "delivery",
-        ],
+        ]),
         'messaging': {
           'url': 'https://www.yelp.com/raq/F5LolHgB5Yznr1j0xhudbQ?adjust_creative=VlwxeBD8K9KAQQhu1J_aVg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=VlwxeBD8K9KAQQhu1J_aVg#popup%3Araq',
           'use_case_text': 'Message the Business'
