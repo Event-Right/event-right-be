@@ -81,7 +81,7 @@ describe('app routes', () => {
       const data = await fakeRequest(app)
         .get('/dogs')
         .expect('Content-Type', /json/)
-        .expect(200);
+        
 
       expect(data.body[0]).toEqual(expectation);
     });
@@ -189,8 +189,8 @@ describe('app routes', () => {
 
       const data = await fakeRequest(app)
         .get('/dogs/F5LolHgB5Yznr1j0xhudbQ')
-        .expect('Content-Type', /json/)
-        .expect(200);
+        .expect('Content-Type', /json/);
+        
 
       expect(data.body).toEqual(expectation);
     });
