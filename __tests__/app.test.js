@@ -80,7 +80,7 @@ describe('app routes', () => {
     
       const data = await fakeRequest(app)
         .get('/dogs')
-        .expect('Content-Type', /json/)
+        .expect('Content-Type', /json/);
         
 
       expect(data.body[0]).toEqual(expectation);
