@@ -9,7 +9,7 @@ const client = require('../lib/client');
 describe('app routes', () => {
   describe('routes', () => {
     let token;
-  
+    
     beforeAll(async done => {
       execSync('npm run setup-db');
   
